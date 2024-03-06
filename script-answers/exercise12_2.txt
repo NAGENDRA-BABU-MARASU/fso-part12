@@ -1,0 +1,21 @@
+PS C:\Users\nagen> docker container run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+bccd10f490ab: Pull complete
+Digest: sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421f44eff17e
+Status: Downloaded newer image for ubuntu:latest
+root@d7596aa8683f:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@d7596aa8683f:/# pwd
+/
+root@d7596aa8683f:/# cd /usr
+root@d7596aa8683f:/usr# cd src
+root@d7596aa8683f:/usr/src# cd app
+bash: cd: app: No such file or directory
+root@d7596aa8683f:/usr/src# mkdir app
+root@d7596aa8683f:/usr/src# cd app
+root@d7596aa8683f:/usr/src/app# touch index.js
+root@d7596aa8683f:/usr/src/app# ls
+index.js
+root@d7596aa8683f:/usr/src/app# exit
+exit

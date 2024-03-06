@@ -1,0 +1,7 @@
+root@d7596aa8683f:/# nano /usr/src/app/index.js
+root@d7596aa8683f:/# cd /usr/src/app/index.js
+bash: cd: /usr/src/app/index.js: Not a directory
+root@d7596aa8683f:/# cd /usr/src/app
+root@d7596aa8683f:/usr/src/app# cat index.js
+console.log('Hello world')
+root@d7596aa8683f:/usr/src/app#
