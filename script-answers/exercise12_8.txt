@@ -1,0 +1,77 @@
+docker exec -it todo-backend-mongo-1 bash
+root@decc3888e012:/# mongosh 
+Current Mongosh Log ID: 65e92e920db4193fa33f0edb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+Using MongoDB:          7.0.6
+Using Mongosh:          2.1.5
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+test> show dbs
+MongoServerError[Unauthorized]: Command listDatabases requires authentication
+test> exit
+root@decc3888e012:/# mongosh -u root -p example
+Current Mongosh Log ID: 65e92eb515417d1920ec14d1
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+Using MongoDB:          7.0.6
+Using Mongosh:          2.1.5
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-03-07T01:23:08.538+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-03-07T01:23:09.143+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+   2024-03-07T01:23:09.143+00:00: vm.max_map_count is too low
+------
+
+test> show dbs
+admin         100.00 KiB
+config         72.00 KiB
+local          72.00 KiB
+the_database   56.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('65e916fb42be8b5078b5b26d'),
+    text: 'Write code 👏👏',
+    done: true
+  },
+  {
+    _id: ObjectId('65e916fb42be8b5078b5b26e'),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+the_database> db.todos.insertOne({text:'Increase the number of tools in my toolbelt', done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('65e92f4f15417d1920ec14d2')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('65e916fb42be8b5078b5b26d'),
+    text: 'Write code 👏👏',
+    done: true
+  },
+  {
+    _id: ObjectId('65e916fb42be8b5078b5b26e'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('65e92f4f15417d1920ec14d2'),
+    text: 'Increase the number of tools in my toolbelt',
+    done: false
+  }
+]
+the_database>
